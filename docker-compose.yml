@@ -1,0 +1,39 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./languages.sql:/docker-entrypoint-initdb.d/languages.sql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=test
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    networks:
+      - backnet
+    healthcheck:
+      test: [ 'CMD-SHELL', 'mysqladmin ping -h 127.0.0.1 --protocol=tcp -u root --silent' ]
+      interval: 3s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    build: .
+    ports:
+      - "8081:8081"
+    expose:
+      - '8081'
+    environment:
+      - APP_ADDR=mysql:3306
+    networks:
+      - backnet
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+networks:
+  backnet:

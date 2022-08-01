@@ -1,0 +1,127 @@
+
+<?xml version="1.0"?>
+<Grid>
+
+   <Cfg id='languages' Size="Low"   SuppressCfg='1' ShowDeleted='1' Deleting='1' ShowButtons="3" PasteSelected ='0' Scrollbar='0'/>
+   <Cfg Validate='Added,Focus,Edit,Changed,Text' ValidateMessageTime='2500' ValidateMessage="Ju lutemi plotësoni të dhënat e nevojshme tek qelizat me ngjyrë të kuqe !"/>
+   <Cfg Paging="2"   PageLength="50" AllPages='1' MaxPages="1"/>
+   <Cfg Alternate='2'/>  
+   <Cfg AutoCalendar='1'/> 
+   <Cfg ExactSize='0'/>
+   <Cfg ConstHeight='1' ConstWidth='1'/>
+   <Cfg SelectingCells='1' />
+   <Cfg ExportType='Expanded,Outline'/>
+   <Cfg EnterMode="1"/>
+   <Cfg CalculateSelected='1'/> 
+   <Cfg PrintVarHeight='2'/>
+   <Cfg Undo='1'/>
+   <Cfg SuppressMessage='1'/>
+   <Cfg NumberId='1' IdChars='0123456789'/> 
+   <Cfg PrintPagePrefix="&lt;center class='%9' style='width:%7px'>First example printed page %3 from %6&lt;/center>"/>
+   <Cfg PrintPagePostfix="&lt;center class='%9' style='width:%7px'>Page %1 horizontally from %4 , page %2 vertically from %5&lt;/center>"/>
+   <Cfg Language='EN'/>
+   <Actions OnMouseOverEditable="Grid.MouseCursor('url(aero_prec.cur),default')"/> 
+   <Actions OnDel="ClearValue"/>
+   <Pager Width="100" Visible='0' Caption='Navigimi'/>
+
+   <Def>      
+      <D Name='Node' Parent='#Body' CDef='Data' Sorted='1' CanEdit='1' AcceptDef='Data' Spanned='1' Calculated='1' Expanded='1' CanFilter='1' 
+      
+      nameSuggest='|*RowsCanFilter'
+      codeSuggest='|*RowsCanFilter'
+      descriptionSuggest='|*RowsCanFilter'
+      noteSuggest='|*RowsCanFilter'
+      uuidSuggest='|*RowsCanFilter'
+      calculationSuggest='|*RowsCanFilter'
+      percentageSuggest='|*RowsCanFilter'
+      nameResultMask=".+"
+      codeResultMask=".+"
+      descriptionResultMask=".+"
+      uuidResultMask=".+"
+      calculationResultMask=".+"
+      percentageResultMask=".+"
+      status='1'
+
+      />
+   </Def>
+
+   <Cols>
+      <C Name='language' Width='150' Type='Text' CaseSensitive='0' CanEdit='1'   VarHeight='1' />
+      <C Name='country' Width='150' Type='Text' CaseSensitive='0' CanEdit='1'   VarHeight='1' />
+      <C Name='two_letters'  Width='150' Type='Text' CanEdit='1' VarHeight='1'   CaseSensitive='0' />
+      <C Name='three_letters'  Width='150' Type='Text' CanEdit='1' VarHeight='1'   CaseSensitive='0' />
+      <C Name='number' Width='150' Type='Int' VarHeight='1' CanSort='1' CanEdit='1'/>
+   </Cols>
+
+    <Solid>     
+
+      <Group Space='1' Calculated='1' Panel='1' id='Group' CanFocus='0' NoUpload="0" Visible='0' CanGroup='1'/>
+      
+      <Search Space='1' Panel='1' id='Search' CanFocus='0' NoUpload="0" Calculated='1' Visible='0'
+         Cells='Case,Type,Expression,Sep1,Filter,Select,Mark,Find,Clear,Sep2'
+         ExpressionAction='Last' ExpressionNoColor='0' ExpressionCanFocus='1' ExpressionLeft='5' ExpressionMinWidth='50'
+         ExpressionEmptyValue ='&lt;s>Search...&lt;/s>'
+         CaseLeft="5" CaseLabelRight="Sensitive characters"
+         TypeLeft="5" TypeLabelRight="Cells"
+         Sep1Width="5" Sep1Type="Html" 
+         Sep2Width="5" Sep2Type="Html"
+         CanPrint='5' DefsPrintHPage='1' CasePrintHPage='1' TypePrintHPage='1' 
+         ExpressionPrintHPage='2' Sep1PrintHPage='2' FilterPrintHPage='2' SelectPrintHPage='2' MarkPrintHPage='2' FindPrintHPage='2' ClearCanPrint='0' HelpCanPrint='0' Sep2PrintHPage='2'
+         />
+   </Solid>
+
+   <Head>
+      <Header id="Header2" CDef = 'Node' Spanned='1' Calculated='1'  SortIcons='0' CanFilter='3' 
+
+      document_no=''
+      language="Description" languageSpan="2" languageAlign="Scroll"
+      two_letters="Identification" two_lettersSpan="3" two_lettersAlign="Scroll"
+      />
+   </Head> 
+
+   <Head>
+
+   <Header id="Header"  CDef = 'Node' Calculated='1'  Spanned='1'  CanFilter='3' CanDelete='1' CanSelect='1'
+   language='Language'
+   country='Country'
+   two_letters='Alfa 2 character'
+   three_letters='Alfa 3 character'
+   number="Numer"
+
+      />
+   </Head>
+
+   <Head>
+   <Filter id='Filter'   Calculated='1' CaseSensitive='0'
+      
+      nameSuggest='|*RowsCanFilter'
+      codeSuggest='|*RowsCanFilter'
+      sales_accountSuggest='|*RowsCanFilter'
+      purchases_accountSuggest='|*RowsCanFilter'
+      descriptionSuggest='|*RowsCanFilter'
+      noteSuggest='|*RowsCanFilter'
+      uuidSuggest='|*RowsCanFilter'
+      calculationSuggest='|*RowsCanFilter'
+      percentageSuggest='|*RowsCanFilter'
+
+      />
+   </Head>
+     
+   <Foot>
+         <I id='Fix1' Def='Foot' CanDelete='0' CanEdit='2' Calculated='1'  Spanned='1' CanSelect='0' CanFilter='0' CanFocus='2'
+         languageFormula='"Total "+"( " + count() + " )"'  languageSpan='2'
+         two_letters='' two_lettersSpan='3'
+          />
+
+   </Foot>
+   <Toolbar Space='-1' Contrast='0' Size='0' Indent='0' Outdent='0' WinScroll='0' Repaint='0'
+             Language='0'  Contrasts='0' Scales='0' Styles='0' Scroll='0' Render='0' Lock='0' Resize='0' Sizes ='0' Debug='0'
+             Help='0'  Calc='0'  
+             Cells10Right="directory,separator"
+             directoryWidth="-2" directoryNoColor="1" directoryType='Html' directoryCanFocus="0"
+             separatorWidth="-2" separatorNoColor="1" separatorType='Html' separatorCanFocus="0"
+             separator="&lt;i style='font-size:16px;font-weight:300;padding:5px' class='ms-Icon ms-Icon--Separator'>" 
+             directory="Languages"
+             
+    />
+</Grid>
